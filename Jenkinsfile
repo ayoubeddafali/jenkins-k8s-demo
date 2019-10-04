@@ -5,7 +5,7 @@ pipeline {
     }
   }
   stages {
-    
+
     stage('Checkout') {
       steps {
         container('maven') {
@@ -16,7 +16,7 @@ pipeline {
     stage('Compile') {
       steps {
         container('maven') {
-          sh 'mvn compile'
+          sh 'mvn compiler:compile'
         }
       }
     }
@@ -24,7 +24,7 @@ pipeline {
     stage('Tests') {
       steps {
         container('maven') {
-          sh 'mvn test'
+          sh 'mvn surefire:test'
         }
       }
     }
@@ -32,7 +32,8 @@ pipeline {
     stage('Package') {
       steps {
         container('maven') {
-          sh 'mvn package'
+          sh 'mvn jar:jar'
+          sh "sleep 30m"
         }
       }
     }
