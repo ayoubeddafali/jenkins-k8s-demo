@@ -5,13 +5,26 @@ pipeline {
     }
   }
   stages {
-    stage('Run maven') {
+    stage('Compile') {
       steps {
-        sh "ls"
-        sh "hostname"
         container('maven') {
-          sh 'ls'
-          sh 'hostname'
+          sh 'mvn compile'
+        }
+      }
+    }
+
+    stage('Tests') {
+      steps {
+        container('maven') {
+          sh 'mvn test'
+        }
+      }
+    }
+
+    stage('Package') {
+      steps {
+        container('maven') {
+          sh 'mvn package'
         }
       }
     }
