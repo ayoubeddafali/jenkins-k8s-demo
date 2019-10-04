@@ -13,7 +13,7 @@ podTemplate(label: 'slave',
         stage 'Switch to Utility Container'
         container('golang') {
 
-          sh ("go version")
+          sh ("sleep 20m")
 
         }
     }
