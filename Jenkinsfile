@@ -29,12 +29,9 @@ pipeline {
       }
     }
 
-    stage('Package') {
+    stage('Debug') {
       steps {
-        container('maven') {
-          sh 'mvn jar:jar'
-          sh "sleep 30m"
-        }
+          sh 'env'
       }
     }
   }
