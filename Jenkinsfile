@@ -5,7 +5,8 @@ pipeline {
     stage('Debug') {
       steps {
         script {
-          println(scm)
+          println(scm.GIT_BRANCH)
+          println(scm.getRepositories())
         }
       }
     }
