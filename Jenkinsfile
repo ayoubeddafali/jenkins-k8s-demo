@@ -4,7 +4,9 @@ pipeline {
 
     stage('Debug') {
       steps {
-          sh 'env'
+        script {
+          println(scm)
+        }
       }
     }
   }
